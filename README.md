@@ -18,6 +18,13 @@ Your choice: d01a
 The solution: X
 ```
 
+Each exercise has at least a test, taking the example input and asserting
+the expected result given by the website. To run the tests:
+
+```sh
+cargo test
+```
+
 ## License
 
 This project is released under the GNU GPL-3.0 license.
