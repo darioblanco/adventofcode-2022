@@ -2,6 +2,7 @@ use std::io;
 
 mod d01a;
 mod d01b;
+mod d02a;
 
 fn main() {
 	println!("Advent of Code 2022 - @darioblanco");
@@ -19,6 +20,7 @@ fn main() {
 	match exercise_id.trim() {
 		"d01a" => d01a::main(),
 		"d01b" => d01b::main(),
+		"d02a" => d02a::main(),
 		_ => println!("Unable to find exercise {}", exercise_id),
 	}
 }
