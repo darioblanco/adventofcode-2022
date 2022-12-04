@@ -7,6 +7,7 @@ mod d02b;
 mod d03a;
 mod d03b;
 mod d04a;
+mod d04b;
 
 fn main() {
 	println!("Advent of Code 2022 - @darioblanco");
@@ -29,6 +30,7 @@ fn main() {
 		"d03a" => d03a::main(),
 		"d03b" => d03b::main(),
 		"d04a" => d04a::main(),
+		"d04b" => d04b::main(),
 		_ => println!("Unable to find exercise {}", exercise_id),
 	}
 }

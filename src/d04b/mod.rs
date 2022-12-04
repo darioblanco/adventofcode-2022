@@ -1,4 +1,4 @@
-/// Executes day 4 part 1 with the exercise input
+/// Executes day 4 part 2 with the exercise input
 /// See https://adventofcode.com/2022/day/4
 pub fn main() {
 	println!("{}", run(include_str!("input.txt")));
@@ -22,9 +22,12 @@ fn run(file_input: &str) -> usize {
 				(min2.parse::<u8>().unwrap(), max2.parse::<u8>().unwrap())
 			)
 		})
-		// Count only the groups that overlap entirely
+		// Count only the groups that overlap at least partially
 		.filter(|((min1, max1), (min2, max2))|
-			(min1 <= min2 && max1 >= max2) || (min1 >= min2 && max1 <= max2)
+			(max1 >= min2 && max1 <= max2) ||
+			(min1 >= min2 && min1 <= max2) ||
+			(min1 <= min2 && max1 >= min2) ||
+			(min1 <= max2 && max1 >= max2)
 		)
 		.count();
 }
@@ -35,6 +38,6 @@ mod tests {
 
     #[test]
     fn example() {
-        assert_eq!(2, run(include_str!("example.txt")));
+        assert_eq!(4, run(include_str!("example.txt")));
     }
 }
