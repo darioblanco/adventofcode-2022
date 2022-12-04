@@ -1,0 +1,7 @@
+[package]
+name = "adventofcode-2022"
+version = "0.0.1"
+authors = ["Dario Blanco Iturriaga"]
+edition = "2021"
+
+d01a = { path = "src/d01a" }
