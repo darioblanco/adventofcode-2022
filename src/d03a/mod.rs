@@ -9,6 +9,8 @@ fn run(file_input: &'static [u8]) -> u16 {
 	return file_input
 		// Split by rucksack (every newline)
 		.split(|b| *b == b'\n')
+		// Skip empty lines (e.g. last line in unix is always empty)
+		.filter(|l| !l.is_empty())
 		// Split each rucksack in half
 		.map(|l| l.split_at(l.len() / 2))
 		// Find repeated element in both rucksack slots
