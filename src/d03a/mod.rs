@@ -32,6 +32,7 @@ fn run(file_input: &'static [u8]) -> u16 {
 			// Advance to the next rucksack
 			.next()
 			.unwrap_or(0))
+		// Sum all priorities from all rucksacks
 		.sum::<u16>();
 }
 
