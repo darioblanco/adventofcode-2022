@@ -4,7 +4,7 @@ My [Advent of Code 2022](https://adventofcode.com/2022/) solutions in Rust.
 This repository holds a single Rust project that will run the exercises based
 on cmd input.
 
-Each exercise folder has the format `d[0-9][0-9](a|b)` contains an `input.txt` file,
+Each exercise folder has the format `d[0-9][0-9](a|b)` and contains an `input.txt` file,
 holding the puzzle input.
 
 Simply run the project and select an exercise.
@@ -19,7 +19,9 @@ The solution: X
 ```
 
 Each exercise has at least a test, taking the example input and asserting
-the expected result given by the website. To run the tests:
+the expected result given by the website.
+
+To run the tests:
 
 ```sh
 cargo test
