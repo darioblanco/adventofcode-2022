@@ -42,10 +42,10 @@ fn run(file_input: &'static [u8]) -> u16 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn example() {
-        assert_eq!(70, run(include_bytes!("example.txt")));
-    }
+	#[test]
+	fn example() {
+		assert_eq!(70, run(include_bytes!("example.txt")));
+	}
 }

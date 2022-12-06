@@ -8,9 +8,7 @@ pub fn main() {
 
 fn run(file_input: &str) -> String {
 	// Split input in initial crate stacks and movements
-	let (
-		crate_stacks, rearrangement_procedure
-	) = file_input.split_once("\n\n").unwrap();
+	let (crate_stacks, rearrangement_procedure) = file_input.split_once("\n\n").unwrap();
 
 	// Initialize stack data structures based on last line of the crate plan
 	let mut stacks = Vec::<VecDeque<char>>::new();
@@ -24,53 +22,45 @@ fn run(file_input: &str) -> String {
 		.for_each(|_| stacks.push(VecDeque::new()));
 
 	// Fill stack data structures with the input elements
-	crate_stacks
-		.lines()
-		.rev()
-		.skip(1)
-		.for_each(|line| {
-			line.chars()
-				.skip(1)
-				.step_by(4)
-				.enumerate()
-				.filter(|(_, c)| c != &' ')
-				.for_each(|(i, c)| stacks[i].push_front(c))
-		});
+	crate_stacks.lines().rev().skip(1).for_each(|line| {
+		line.chars()
+			.skip(1)
+			.step_by(4)
+			.enumerate()
+			.filter(|(_, c)| c != &' ')
+			.for_each(|(i, c)| stacks[i].push_front(c))
+	});
 
 	// Perform rearrangement procedures
-	rearrangement_procedure
-		.lines()
-		.for_each(|line| {
-			let commands: Vec<&str> = line
-				.split_whitespace()
-				.collect();
-			let (quantity, origin, target) = (
-				commands[1].parse::<usize>().unwrap(),
-				commands[3].parse::<usize>().unwrap() - 1,
-				commands[5].parse::<usize>().unwrap() -1
-			);
-			(0..quantity).for_each(|_| {
-				let crate_box = stacks[origin].pop_front().unwrap();
-				aux_stack.push_front(crate_box);
-			});
-			aux_stack
-				.iter()
-				.for_each(|crate_box| stacks[target].push_front(*crate_box));
-			aux_stack.clear();
+	rearrangement_procedure.lines().for_each(|line| {
+		let commands: Vec<&str> = line.split_whitespace().collect();
+		let (quantity, origin, target) = (
+			commands[1].parse::<usize>().unwrap(),
+			commands[3].parse::<usize>().unwrap() - 1,
+			commands[5].parse::<usize>().unwrap() - 1,
+		);
+		(0..quantity).for_each(|_| {
+			let crate_box = stacks[origin].pop_front().unwrap();
+			aux_stack.push_front(crate_box);
 		});
+		aux_stack
+			.iter()
+			.for_each(|crate_box| stacks[target].push_front(*crate_box));
+		aux_stack.clear();
+	});
 
 	return stacks
 		.iter()
-        .map(|stack| format!("{}", stack.get(0).unwrap()))
+		.map(|stack| format!("{}", stack.get(0).unwrap()))
 		.collect::<String>();
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn example() {
-        assert_eq!("MCD", run(include_str!("example.txt")));
-    }
+	#[test]
+	fn example() {
+		assert_eq!("MCD", run(include_str!("example.txt")));
+	}
 }

@@ -13,31 +13,31 @@ fn run(file_input: &str) -> usize {
 		// Parse minimum and maximum ranges per group
 		.map(|line| {
 			let (range1, range2) = line.trim().split_once(",").unwrap();
-			let ((min1,  max1), ( min2,  max2)) = (
+			let ((min1, max1), (min2, max2)) = (
 				range1.split_once('-').unwrap(),
 				range2.split_once('-').unwrap(),
 			);
 			return (
 				(min1.parse::<u8>().unwrap(), max1.parse::<u8>().unwrap()),
-				(min2.parse::<u8>().unwrap(), max2.parse::<u8>().unwrap())
-			)
+				(min2.parse::<u8>().unwrap(), max2.parse::<u8>().unwrap()),
+			);
 		})
 		// Count only the groups that overlap at least partially
-		.filter(|((min1, max1), (min2, max2))|
-			(max1 >= min2 && max1 <= max2) ||
-			(min1 >= min2 && min1 <= max2) ||
-			(min1 <= min2 && max1 >= min2) ||
-			(min1 <= max2 && max1 >= max2)
-		)
+		.filter(|((min1, max1), (min2, max2))| {
+			(max1 >= min2 && max1 <= max2)
+				|| (min1 >= min2 && min1 <= max2)
+				|| (min1 <= min2 && max1 >= min2)
+				|| (min1 <= max2 && max1 >= max2)
+		})
 		.count();
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn example() {
-        assert_eq!(4, run(include_str!("example.txt")));
-    }
+	#[test]
+	fn example() {
+		assert_eq!(4, run(include_str!("example.txt")));
+	}
 }

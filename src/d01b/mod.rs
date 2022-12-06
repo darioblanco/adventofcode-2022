@@ -7,7 +7,8 @@ pub fn main() {
 }
 
 fn run(file_input: &str) -> u32 {
-	let mut calories = file_input.split("\n\n")
+	let mut calories = file_input
+		.split("\n\n")
 		.map(|c| c.lines().map(|c| c.parse::<u32>().unwrap()).sum::<u32>())
 		.collect::<Vec<u32>>();
 	calories.sort_unstable_by_key(|k| Reverse(*k));
@@ -16,10 +17,10 @@ fn run(file_input: &str) -> u32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn example() {
-        assert_eq!(45000, run(include_str!("example.txt")));
-    }
+	#[test]
+	fn example() {
+		assert_eq!(45000, run(include_str!("example.txt")));
+	}
 }

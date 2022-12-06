@@ -14,7 +14,8 @@ fn run(file_input: &'static [u8]) -> u16 {
 		// Split each rucksack in half
 		.map(|l| l.split_at(l.len() / 2))
 		// Find repeated element in both rucksack slots
-		.map(|(slot1, slot2)| slot1
+		.map(|(slot1, slot2)| {
+			slot1
 			.iter()
 			// Element from slot1 is also in slot2
 			.filter(|x| slot2.contains(x))
@@ -33,17 +34,18 @@ fn run(file_input: &'static [u8]) -> u16 {
 			)
 			// Advance to the next rucksack
 			.next()
-			.unwrap_or(0))
+			.unwrap_or(0)
+		})
 		// Sum all priorities from all rucksacks
 		.sum::<u16>();
 }
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn example() {
-        assert_eq!(157, run(include_bytes!("example.txt")));
-    }
+	#[test]
+	fn example() {
+		assert_eq!(157, run(include_bytes!("example.txt")));
+	}
 }

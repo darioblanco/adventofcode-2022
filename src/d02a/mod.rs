@@ -5,7 +5,8 @@ pub fn main() {
 }
 
 fn run(file_input: &str) -> u32 {
-	return file_input.lines()
+	return file_input
+		.lines()
 		.map(|l| {
 			let args: Vec<&str> = l.trim().split_whitespace().collect();
 			return calculate_score(args[0], args[1]);
@@ -15,7 +16,7 @@ fn run(file_input: &str) -> u32 {
 
 fn calculate_score(opponent_play: &str, own_play: &str) -> u32 {
 	let shape_score: u32 = match own_play {
-		 // Rock
+		// Rock
 		"X" => 1,
 		// Paper
 		"Y" => 2,
@@ -35,7 +36,7 @@ fn calculate_score(opponent_play: &str, own_play: &str) -> u32 {
 				// Rock vs Scissors
 				outcome_score = 0
 			}
-		},
+		}
 		// Paper
 		"B" => {
 			if own_play == "Z" {
@@ -45,7 +46,7 @@ fn calculate_score(opponent_play: &str, own_play: &str) -> u32 {
 				// Paper vs Rock
 				outcome_score = 0
 			}
-		},
+		}
 		// Scissors
 		"C" => {
 			if own_play == "X" {
@@ -55,7 +56,7 @@ fn calculate_score(opponent_play: &str, own_play: &str) -> u32 {
 				// Scissors vs Paper
 				outcome_score = 0
 			}
-		},
+		}
 		// Invalid play
 		_ => (),
 	}
@@ -64,10 +65,10 @@ fn calculate_score(opponent_play: &str, own_play: &str) -> u32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn example() {
-        assert_eq!(15, run(include_str!("example.txt")));
-    }
+	#[test]
+	fn example() {
+		assert_eq!(15, run(include_str!("example.txt")));
+	}
 }

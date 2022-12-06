@@ -5,7 +5,8 @@ pub fn main() {
 }
 
 fn run(file_input: &str) -> u32 {
-	return file_input.lines()
+	return file_input
+		.lines()
 		.map(|l| {
 			let args: Vec<&str> = l.trim().split_whitespace().collect();
 			return calculate_score(args[0], args[1]);
@@ -27,7 +28,7 @@ fn calculate_score(opponent_play: &str, round_outcome: &str) -> u32 {
 				// Invalid play
 				_ => return 0,
 			};
-		},
+		}
 		// Paper
 		"B" => {
 			match round_outcome {
@@ -40,7 +41,7 @@ fn calculate_score(opponent_play: &str, round_outcome: &str) -> u32 {
 				// Invalid play
 				_ => return 0,
 			};
-		},
+		}
 		// Scissors
 		"C" => {
 			match round_outcome {
@@ -53,7 +54,7 @@ fn calculate_score(opponent_play: &str, round_outcome: &str) -> u32 {
 				// Invalid play
 				_ => return 0,
 			};
-		},
+		}
 		// Invalid play
 		_ => return 0,
 	}
@@ -61,10 +62,10 @@ fn calculate_score(opponent_play: &str, round_outcome: &str) -> u32 {
 
 #[cfg(test)]
 mod tests {
-    use super::*;
+	use super::*;
 
-    #[test]
-    fn example() {
-        assert_eq!(12, run(include_str!("example.txt")));
-    }
+	#[test]
+	fn example() {
+		assert_eq!(12, run(include_str!("example.txt")));
+	}
 }
