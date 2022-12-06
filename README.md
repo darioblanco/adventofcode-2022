@@ -15,7 +15,8 @@ Advent of Code 2022 - @darioblanco
 Please input the exercise id (e.g d01a).
 d01a
 Your choice: d01a
-The solution: X
+
+Solution
 ```
 
 Each exercise has at least a test, taking the example input and asserting
