@@ -1,5 +1,5 @@
 /// Executes day 6 part 1 with the exercise input
-/// See https://adventofcode.com/2022/day/5
+/// See https://adventofcode.com/2022/day/6
 pub fn main() {
 	println!("{}", run(include_bytes!("input.txt")));
 }
