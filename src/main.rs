@@ -13,7 +13,7 @@ mod d05b;
 mod d06a;
 mod d06b;
 mod d07a;
-// mod d07b;
+mod d07b;
 // mod d08a;
 // mod d08b;
 // mod d09a;
@@ -78,7 +78,7 @@ fn main() {
 		"d06a" => d06a::main(),
 		"d06b" => d06b::main(),
 		"d07a" => d07a::main(),
-		// "d07b" => d07b::main(),
+		"d07b" => d07b::main(),
 		// "d08a" => d08a::main(),
 		// "d08b" => d08b::main(),
 		// "d09a" => d09a::main(),
